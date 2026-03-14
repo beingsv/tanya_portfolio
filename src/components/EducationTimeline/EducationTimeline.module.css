@@ -1,0 +1,145 @@
+/* EducationTimeline — vertical timeline with alternating entries */
+
+.section {
+  padding: var(--section-padding);
+  background-color: var(--color-secondary);
+}
+
+.inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Timeline container */
+.timeline {
+  position: relative;
+  padding: 0;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-accent);
+}
+
+/* Single entry */
+.entry {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+/* Dot on the timeline */
+.entry::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  border: 3px solid var(--color-secondary);
+}
+
+/* Card */
+.card {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+.institution {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.degree {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.years {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  margin-top: 0.5rem;
+}
+
+/* Entrance animation */
+.animated {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--animation-duration) var(--animation-easing),
+              transform var(--animation-duration) var(--animation-easing);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Tablet */
+@media (min-width: 768px) {
+  .heading {
+    font-size: 2.25rem;
+  }
+}
+
+/* Desktop — two-column alternating layout */
+@media (min-width: 1025px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .entry {
+    width: 50%;
+    padding-left: 0;
+    padding-right: 2.5rem;
+    margin-left: 0;
+  }
+
+  .entry::before {
+    left: auto;
+    right: -7px;
+    top: 6px;
+  }
+
+  .entry:nth-child(even) {
+    margin-left: 50%;
+    padding-left: 2.5rem;
+    padding-right: 0;
+  }
+
+  .entry:nth-child(even)::before {
+    right: auto;
+    left: -7px;
+  }
+}

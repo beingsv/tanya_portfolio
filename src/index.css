@@ -1,0 +1,122 @@
+/* ===== CSS Custom Properties (Design Tokens) ===== */
+:root {
+  /* Five-color palette (Req 9.1) — warm, subtle tones */
+  --color-primary: #2d3436;
+  --color-secondary: #f0ebe3;
+  --color-accent: #7c6a56;
+  --color-surface: #faf8f5;
+  --color-text: #2d3436;
+
+  /* Typography — two font families (Req 9.3) */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Animation tokens (Req 10.2, 10.3) */
+  --animation-duration: 500ms;
+  --animation-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Spacing (Req 9.2) */
+  --section-padding: 5rem 1.5rem;
+  --content-max-width: 1200px;
+}
+
+/* Reduced motion (Req 10.4) */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-duration: 0ms;
+  }
+}
+
+/* ===== CSS Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ===== Animation base classes ===== */
+.animated {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.animated.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Responsive breakpoints (mobile-first, Req 11.1) ===== */
+
+/* Base styles: mobile (< 768px) */
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  :root {
+    --section-padding: 6rem 2rem;
+  }
+}
+
+/* Desktop (1025px+) */
+@media (min-width: 1025px) {
+  :root {
+    --section-padding: 8rem 2.5rem;
+  }
+}
