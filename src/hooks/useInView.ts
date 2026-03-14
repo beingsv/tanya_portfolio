@@ -6,7 +6,7 @@ interface UseInViewOptions {
 }
 
 interface UseInViewReturn {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
   isInView: boolean;
 }
 
